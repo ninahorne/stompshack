@@ -1,6 +1,15 @@
 
 @import "tailwindcss";
 
+@theme {
+  --font-acier: "acier-bat-solid", sans-serif;
+  --font-sans: "acier-bat-solid", ui-sans-serif, system-ui, sans-serif;
+
+  --color-brand: #9c1f21;
+  --color-pop: #ed1b68;
+  --color-ice: #c4dbe9;
+}
+
 * {
   box-sizing: border-box;
 }
@@ -14,4 +23,3 @@ body,
 body {
   margin: 0;
 }
-
