@@ -1,11 +1,97 @@
-
 <!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Stomp Shack | New Orleans Queer Country Line Dancing</title>
+    <meta
+      name="description"
+      content="Stomp Shack is New Orleans queer country line dancing. Every Sunday night at 7pm at Hi-Ho Lounge, 2239 St. Claude Ave. No experience, no partner needed - all are welcome."
+    />
+    <link rel="canonical" href="https://stompshacknola.com/" />
+    <meta name="theme-color" content="#ed1b68" />
+    <link rel="icon" type="image/png" href="/stompshack-full.png" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Stomp Shack" />
+    <meta property="og:title" content="Stomp Shack | New Orleans Queer Country Line Dancing" />
+    <meta
+      property="og:description"
+      content="Every Sunday night at 7pm at Hi-Ho Lounge, 2239 St. Claude Ave. No experience, no partner needed - all are welcome."
+    />
+    <meta property="og:url" content="https://stompshacknola.com/" />
+    <meta property="og:image" content="https://stompshacknola.com/stompshack-full.png" />
+    <meta property="og:image:width" content="1920" />
+    <meta property="og:image:height" content="1248" />
+    <meta property="og:image:type" content="image/png" />
+    <meta property="og:image:alt" content="Stomp Shack logo" />
+    <meta property="og:locale" content="en_US" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Stomp Shack | New Orleans Queer Country Line Dancing" />
+    <meta
+      name="twitter:description"
+      content="Every Sunday night at 7pm at Hi-Ho Lounge, 2239 St. Claude Ave. No experience, no partner needed - all are welcome."
+    />
+    <meta name="twitter:image" content="https://stompshacknola.com/stompshack-full.png" />
+    <meta name="twitter:image:alt" content="Stomp Shack logo" />
+
     <link rel="stylesheet" href="https://use.typekit.net/xut8lim.css" />
-    <title>stompshack</title>
+
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "Organization",
+            "@id": "https://stompshacknola.com/#organization",
+            "name": "Stomp Shack",
+            "url": "https://stompshacknola.com/",
+            "logo": "https://stompshacknola.com/stompshack-full.png",
+            "description": "New Orleans queer country line dancing collective spreading the pure joy of line dancing all around the Big Easy.",
+            "email": "stompshacknola@gmail.com",
+            "founder": {
+              "@type": "Person",
+              "name": "Haley Rowe-Kadow"
+            },
+            "sameAs": [
+              "https://instagram.com/stompshack",
+              "https://tiktok.com/@stomp.shack",
+              "https://stompshack.substack.com"
+            ]
+          },
+          {
+            "@type": "Event",
+            "name": "Stomp Shack Line Dancing",
+            "url": "https://stompshacknola.com/",
+            "description": "New Orleans queer country line dancing. Traditional line dances and new dances across musical genres - no experience necessary, no partner needed.",
+            "organizer": { "@id": "https://stompshacknola.com/#organization" },
+            "performer": { "@id": "https://stompshacknola.com/#organization" },
+            "location": {
+              "@type": "Place",
+              "name": "Hi-Ho Lounge",
+              "address": {
+                "@type": "PostalAddress",
+                "streetAddress": "2239 St. Claude Ave",
+                "addressLocality": "New Orleans",
+                "addressRegion": "LA",
+                "postalCode": "70116",
+                "addressCountry": "US"
+              }
+            },
+            "eventSchedule": {
+              "@type": "Schedule",
+              "repeatFrequency": "P1W",
+              "byDay": "https://schema.org/Sunday",
+              "startTime": "19:00",
+              "duration": "PT3H"
+            },
+            "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+            "inLanguage": "en-US"
+          }
+        ]
+      }
+    </script>
   </head>
   <body>
     <div id="app"></div>
