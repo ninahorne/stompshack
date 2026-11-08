@@ -11,14 +11,14 @@ function scrollToId(id: string) {
 export function Header() {
   return (
     <header className="bg-pop text-white">
-      <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
+      <div className="flex items-center justify-between px-6 py-4">
         <a
           href="/"
           onClick={(e) => {
             e.preventDefault()
             window.scrollTo({ top: 0, behavior: 'smooth' })
           }}
-          className="text-2xl font-bold tracking-wide hover:opacity-80"
+              className="text-3xl font-bold tracking-wide hover:opacity-80"
         >
           STOMP SHACK
         </a>
@@ -31,7 +31,7 @@ export function Header() {
                 e.preventDefault()
                 scrollToId(id)
               }}
-              className="font-bold tracking-wide hover:opacity-80"
+              className="text-3xl font-bold tracking-wide hover:opacity-80"
             >
               {label}
             </a>
