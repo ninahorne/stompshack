@@ -55,7 +55,7 @@ function Home() {
           every sunday night @ 7pm || hi-ho lounge on st. claude
         </p>
       </section>
-      <section id="about" className="flex flex-col items-center py-16">
+      <section className="flex flex-col items-center py-16">
         <img
           src="/stompshack-action-1.jpeg"
           alt="Stomp Shack line dancing"
@@ -81,7 +81,7 @@ function Home() {
           className="mt-16 h-48 w-full object-cover"
         />
       </section>
-      <section className="py-16 text-white">
+      <section id="about" className="py-16 text-white">
         <h2 className="text-5xl font-bold md:text-6xl">ABOUT</h2>
         <div className="mt-8 space-y-6 leading-relaxed uppercase [word-spacing:0.25rem]">
           <p>
