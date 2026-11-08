@@ -1,9 +1,8 @@
-
-@import "tailwindcss";
+@import 'tailwindcss';
 
 @theme {
-  --font-acier: "acier-bat-solid", sans-serif;
-  --font-sans: "acier-bat-solid", ui-sans-serif, system-ui, sans-serif;
+  --font-acier: 'acier-bat-solid', sans-serif;
+  --font-sans: 'acier-bat-solid', ui-sans-serif, system-ui, sans-serif;
 
   --color-brand: #9c1f21;
   --color-pop: #ed1b68;

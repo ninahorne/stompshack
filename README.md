@@ -1,194 +1,78 @@
-Welcome to your new TanStack Start app!
+# Stomp Shack
 
-# Getting Started
+Site for Stomp Shack, New Orleans queer country line dancing. Every Sunday night @ 7pm at Hi-Ho Lounge, 2239 St. Claude Ave.
 
-To run this application:
+Live at [stompshack.netlify.app](https://stompshack.netlify.app) (canonical domain: [stompshacknola.com](https://stompshacknola.com)).
+
+## Stack
+
+- [React](https://react.dev/) + [TanStack Router](https://tanstack.com/router) (client-side SPA, file-based routing)
+- [Vite](https://vite.dev/)
+- [Tailwind CSS 4](https://tailwindcss.com/) with CSS-first theming
+- Fonts: Acier BAT via [Adobe Fonts](https://fonts.adobe.com/)
+
+## Getting Started
 
 ```bash
 pnpm install
 pnpm dev
 ```
 
-# Building For Production
+Dev server runs at http://localhost:3000.
 
-To build this application for production:
+## Building For Production
 
 ```bash
 pnpm build
 ```
 
-## Styling
+Output goes to `dist/`.
 
-This project uses [Tailwind CSS](https://tailwindcss.com/) for styling.
+## Theme
 
-### Removing Tailwind CSS
+All design tokens live in the Tailwind 4 `@theme` block in `src/styles.css`:
 
-If you prefer not to use Tailwind CSS:
+- `--font-acier` - Acier BAT, set as the default body font
+- `--color-brand` (`#9c1f21`) - site background red
+- `--color-pop` (`#ed1b68`) - pink header / accents
+- `--color-ice` (`#c4dbe9`) - light blue accents
 
-1. Remove the demo pages in `src/routes/demo/`
-2. Replace the Tailwind import in `src/styles.css` with your own styles
-3. Remove `tailwindcss()` from the plugins array in `vite.config.ts`
-4. Remove `@tailwindcss/vite` and `tailwindcss` from `package.json`
+Edit tokens there to change the look site-wide; utilities like `bg-pop` and `text-brand` are generated from them.
+
+## Content
+
+The site is a single page:
+
+- `src/routes/__root.tsx` - root route, renders the `Header` (nav links scroll to page sections)
+- `src/routes/index.tsx` - hero, photo sections, FAQ (copy in the `FAQS` array), and contact info
+- `src/components/Header.tsx` - pink nav bar with anchor links
+
+Images live in `public/` (`stompshack-full.png`, `stompshack-action-1/2/3.jpeg`).
+
+## SEO & Discoverability
+
+- `index.html` - title, description, canonical, OpenGraph/Twitter cards, and JSON-LD structured data (Organization + weekly Event)
+- `public/robots.txt`, `public/sitemap.xml` - search engine crawling
+- `public/llms.txt` - summary for AI assistants
+
+Canonical URLs are hardcoded to `https://stompshacknola.com` - when the domain is connected, find/replace it across `index.html`, `public/robots.txt`, `public/sitemap.xml`, and `public/llms.txt`.
+
+## Deployment
+
+Hosted on Netlify via `netlify.toml` (build: `pnpm build`, publish: `dist`, SPA redirect).
+
+```bash
+netlify deploy --prod --build
+```
+
+Project admin: https://app.netlify.com/projects/stompshack
 
 ## Linting & Formatting
 
-
-This project uses [eslint](https://eslint.org/) and [prettier](https://prettier.io/) for linting and formatting. Eslint is configured using [tanstack/eslint-config](https://tanstack.com/config/latest/docs/eslint). The following scripts are available:
+Uses [eslint](https://eslint.org/) (TanStack config) and [prettier](https://prettier.io/):
 
 ```bash
 pnpm lint
 pnpm format
 pnpm check
 ```
-
-
-
-## Routing
-
-This project uses [TanStack Router](https://tanstack.com/router) with file-based routing. Routes are managed as files in `src/routes`.
-
-### Adding A Route
-
-To add a new route to your application just add a new file in the `./src/routes` directory.
-
-TanStack will automatically generate the content of the route file for you.
-
-Now that you have two routes you can use a `Link` component to navigate between them.
-
-### Adding Links
-
-To use SPA (Single Page Application) navigation you will need to import the `Link` component from `@tanstack/react-router`.
-
-```tsx
-import { Link } from "@tanstack/react-router";
-```
-
-Then anywhere in your JSX you can use it like so:
-
-```tsx
-<Link to="/about">About</Link>
-```
-
-This will create a link that will navigate to the `/about` route.
-
-More information on the `Link` component can be found in the [Link documentation](https://tanstack.com/router/v1/docs/framework/react/api/router/linkComponent).
-
-### Using A Layout
-
-In the File Based Routing setup the layout is located in `src/routes/__root.tsx`. Anything you add to the root route will appear in all the routes. The route content will appear in the JSX where you render `{children}` in the `shellComponent`.
-
-Here is an example layout that includes a header:
-
-```tsx
-import { HeadContent, Scripts, createRootRoute } from '@tanstack/react-router'
-
-export const Route = createRootRoute({
-  head: () => ({
-    meta: [
-      { charSet: 'utf-8' },
-      { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { title: 'My App' },
-    ],
-  }),
-  shellComponent: ({ children }) => (
-    <html lang="en">
-      <head>
-        <HeadContent />
-      </head>
-      <body>
-        <header>
-          <nav>
-            <Link to="/">Home</Link>
-            <Link to="/about">About</Link>
-          </nav>
-        </header>
-        {children}
-        <Scripts />
-      </body>
-    </html>
-  ),
-})
-```
-
-More information on layouts can be found in the [Layouts documentation](https://tanstack.com/router/latest/docs/framework/react/guide/routing-concepts#layouts).
-
-## Server Functions
-
-TanStack Start provides server functions that allow you to write server-side code that seamlessly integrates with your client components.
-
-```tsx
-import { createServerFn } from '@tanstack/react-start'
-
-const getServerTime = createServerFn({
-  method: 'GET',
-}).handler(async () => {
-  return new Date().toISOString()
-})
-
-// Use in a component
-function MyComponent() {
-  const [time, setTime] = useState('')
-  
-  useEffect(() => {
-    getServerTime().then(setTime)
-  }, [])
-  
-  return <div>Server time: {time}</div>
-}
-```
-
-## API Routes
-
-You can create API routes by using the `server` property in your route definitions:
-
-```tsx
-import { createFileRoute } from '@tanstack/react-router'
-import { json } from '@tanstack/react-start'
-
-export const Route = createFileRoute('/api/hello')({
-  server: {
-    handlers: {
-      GET: () => json({ message: 'Hello, World!' }),
-    },
-  },
-})
-```
-
-## Data Fetching
-
-There are multiple ways to fetch data in your application. You can use TanStack Query to fetch data from a server. But you can also use the `loader` functionality built into TanStack Router to load the data for a route before it's rendered.
-
-For example:
-
-```tsx
-import { createFileRoute } from '@tanstack/react-router'
-
-export const Route = createFileRoute('/people')({
-  loader: async () => {
-    const response = await fetch('https://swapi.dev/api/people')
-    return response.json()
-  },
-  component: PeopleComponent,
-})
-
-function PeopleComponent() {
-  const data = Route.useLoaderData()
-  return (
-    <ul>
-      {data.results.map((person) => (
-        <li key={person.name}>{person.name}</li>
-      ))}
-    </ul>
-  )
-}
-```
-
-Loaders simplify your data fetching logic dramatically. Check out more information in the [Loader documentation](https://tanstack.com/router/latest/docs/framework/react/guide/data-loading#loader-parameters).
-
-
-
-# Learn More
-
-You can learn more about all of the offerings from TanStack in the [TanStack documentation](https://tanstack.com).
-
-For TanStack Start specific documentation, visit [TanStack Start](https://tanstack.com/start).

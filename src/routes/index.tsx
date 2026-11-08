@@ -92,14 +92,14 @@ function Home() {
           <p>
             Based in New Orleans, Stomp Shack hosts line dancing events at our
             neighborhood bar. Led by Haley Rowe-Kadow, a New Orleans local - we
-            dance traditional line-dances as well as new dances that are
-            hitting the scene seemingly every day now. Though we do dance to
-            country music, our tastes run the gamut and we dance to everything
-            across musical genres.
+            dance traditional line-dances as well as new dances that are hitting
+            the scene seemingly every day now. Though we do dance to country
+            music, our tastes run the gamut and we dance to everything across
+            musical genres.
           </p>
           <p>
-            Stomp Shack&apos;s mission is to spread the pure joy of line
-            dancing all around the Big Easy.
+            Stomp Shack&apos;s mission is to spread the pure joy of line dancing
+            all around the Big Easy.
           </p>
           <p>
             If you&apos;d like to keep up with us, find us on Instagram (
@@ -139,7 +139,7 @@ function Home() {
         alt="Stomp Shack line dancing"
         className="h-48 w-full object-cover"
       />
-      <section id="contact" className="py-16 text-white">
+      <section id="contact" className="pt-16 pb-52 text-white">
         <h2 className="text-5xl font-bold md:text-6xl">CONTACT</h2>
         <ul className="mt-8 space-y-4 leading-relaxed uppercase">
           <li>
