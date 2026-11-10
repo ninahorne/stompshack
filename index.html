@@ -51,7 +51,10 @@
     <link rel="stylesheet" href="https://use.typekit.net/xut8lim.css" />
 
     <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-7WG60J8QHV"></script>
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-7WG60J8QHV"
+    ></script>
     <script>
       window.dataLayer = window.dataLayer || []
       function gtag() {
@@ -61,7 +64,8 @@
       gtag('config', 'G-7WG60J8QHV')
     </script>
 
-    <script type="application/ld+json">      {
+    <script id="event-schema" type="application/ld+json">
+      {
         "@context": "https://schema.org",
         "@graph": [
           {
@@ -87,6 +91,23 @@
             "name": "Stomp Shack Line Dancing",
             "url": "https://stompshacknola.com/",
             "description": "New Orleans queer country line dancing. Traditional line dances and new dances across musical genres - no experience necessary, no partner needed.",
+            "image": [
+              "https://stompshacknola.com/stompshack-full.png",
+              "https://stompshacknola.com/stompshack-action-1.jpeg",
+              "https://stompshacknola.com/stompshack-action-2.jpeg",
+              "https://stompshacknola.com/stompshack-action-3.jpeg"
+            ],
+            "startDate": "2026-11-15T19:00:00-06:00",
+            "endDate": "2026-11-15T22:00:00-06:00",
+            "eventStatus": "https://schema.org/EventScheduled",
+            "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+            "offers": {
+              "@type": "Offer",
+              "url": "https://stompshacknola.com/",
+              "price": 0,
+              "priceCurrency": "USD",
+              "availability": "https://schema.org/InStock"
+            },
             "organizer": { "@id": "https://stompshacknola.com/#organization" },
             "performer": { "@id": "https://stompshacknola.com/#organization" },
             "location": {
@@ -108,11 +129,66 @@
               "startTime": "19:00",
               "duration": "PT3H"
             },
-            "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
             "inLanguage": "en-US"
           }
         ]
       }
+    </script>
+    <script>
+      ;(function () {
+        try {
+          var TZ = 'America/Chicago'
+          var fmt = new Intl.DateTimeFormat('en-CA', {
+            timeZone: TZ,
+            year: 'numeric',
+            month: '2-digit',
+            day: '2-digit',
+            hour: '2-digit',
+            minute: '2-digit',
+            hour12: false,
+          })
+          var p = {}
+          fmt.formatToParts(new Date()).forEach(function (part) {
+            p[part.type] = part.value
+          })
+          var localNow = new Date(
+            Date.UTC(+p.year, +p.month - 1, +p.day, +p.hour % 24, +p.minute),
+          )
+          var add = (7 - localNow.getUTCDay()) % 7
+          if (add === 0 && +p.hour % 24 >= 22) add = 7
+          var target = new Date(localNow.getTime() + add * 86400000)
+          var y = target.getUTCFullYear()
+          var m0 = target.getUTCMonth()
+          var d = target.getUTCDate()
+          function nthSunday(year, month, n) {
+            var first = new Date(Date.UTC(year, month, 1))
+            return new Date(
+              Date.UTC(
+                year,
+                month,
+                1 + ((7 - first.getUTCDay()) % 7) + (n - 1) * 7,
+              ),
+            )
+          }
+          var isDST =
+            nthSunday(y, 2, 2) <= target && target < nthSunday(y, 10, 1)
+          var offset = isDST ? '-05:00' : '-06:00'
+          var pad = function (n) {
+            return String(n).padStart(2, '0')
+          }
+          var date = y + '-' + pad(m0 + 1) + '-' + pad(d)
+          var script = document.getElementById('event-schema')
+          if (!script) return
+          var data = JSON.parse(script.textContent)
+          data['@graph'].forEach(function (node) {
+            if (node['@type'] === 'Event') {
+              node.startDate = date + 'T19:00:00' + offset
+              node.endDate = date + 'T22:00:00' + offset
+            }
+          })
+          script.textContent = JSON.stringify(data)
+        } catch (e) {}
+      })()
     </script>
   </head>
   <body>
